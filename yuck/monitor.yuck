@@ -1,0 +1,47 @@
+(defwindow monitorLayout
+  :monitor '[1, 0]'
+  :stacking "fg"
+  :geometry (geometry
+    :anchor "top right"
+    :y "1%"
+    :x "330"
+  )
+  :exclusive false
+  (monitorBox)
+)
+
+(defwidget monitorBox []
+  (box
+    :class "container-layout"
+    (monitorSwitcher)
+  )
+)
+
+(defwidget monitorSwitcher []
+  (box
+    :class brillclass
+    :space-evenly false
+    :spacing 15
+    :orientation "v"
+    (button
+      :class "layout-text"
+      :onclick "scripts/monitor.sh 0"
+      (label :show-truncated false :text "Dual monitor")
+    )
+    (button
+      :class "layout-text"
+      :onclick "scripts/monitor.sh 1"
+      (label :show-truncated false :text "HDMI Only")
+    )
+    (button
+      :class "layout-text"
+      :onclick "scripts/monitor.sh 2"
+      (label :show-truncated false :text "PC Only")
+    )
+    (button
+      :class "layout-text"
+      :onclick "scripts/monitor.sh 3"
+      (label :show-truncated false :text "Screen Mirror")
+    )
+  )
+)

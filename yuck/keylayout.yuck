@@ -1,0 +1,36 @@
+(defwindow layoutWindow
+    :monitor '[1, 0]'
+    :stacking "fg"
+    :geometry (geometry
+      :anchor "top right"
+      :y "1%"
+      :x "320"
+    )
+    :exclusive false
+    (layoutBox)
+)
+
+(defwidget layoutBox []
+    (box
+      :class "container-layout"
+      (keylayout)
+    )
+)
+
+(defwidget keylayout [] 
+    (box
+      :class brillclass
+      :space-evenly false
+      :spacing 15
+      (button
+        :class "layout-text"
+        :onclick "hyprctl switchxkblayout all 1"
+        (label :show-truncated false :text "ES")
+      )
+      (button
+        :class "layout-text"
+        :onclick "hyprctl switchxkblayout all 0"
+        (label :show-truncated false :text "EN")
+      )
+    )
+  )

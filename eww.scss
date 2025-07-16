@@ -1,0 +1,252 @@
+$color-barra-fondo: rgba(14, 15, 24, 0.85);
+$color-container-fondo: rgba(14, 15, 24, 0.85);
+
+$color-letra: #ffffff;
+$color-icono: #f0f5f9;
+
+$color-primario: #f0f5f9;
+$color-secundario: rgb(189, 41, 115);
+
+$color-off: #ea7d7d;
+$color-calendar: #1b95a6;
+
+$color-separ: rgba(189, 41, 115, 0.42);
+
+$container-music-fondo: rgb(14, 15, 24, 0.2);
+$metric-fondo: #565773;
+
+$border-radius: 5px;
+
+$font-icon: "Font Awesome 6 free";
+$font-icon2: "Font Awesome 6 free solid";
+$font-icon3: "Material-Design-Iconic-Font";
+$font-main: "Bitter";
+
+* {
+  all: unset;
+}
+
+.bar {
+  background: $color-barra-fondo;
+  color: $color-letra;
+  border-radius: $border-radius;
+}
+
+.container {
+  // background: $color-container-fondo;
+  font-family: $font-main;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 16px;
+}
+
+.container-musica {
+  border-radius: 22px;
+  background: $container-music-fondo;
+  font-family: $font-main;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 16px;
+}
+
+.separ {
+  color: $color-separ;
+  font-size: 20;
+}
+
+.icono {
+  color: $color-primario;
+  font-size: 20;
+  font-family: $font-icon;
+}
+
+.iconoBt {
+  color: $color-primario;
+  font-size: 23;
+  font-family: $font-icon3;
+}
+
+.texto-icono {
+  margin-left: 15px;
+}
+
+.metric scale trough {
+  border-radius: 10;
+  min-width: 120px;
+  min-height: 10px;
+  background-color: $metric-fondo;
+}
+
+.metric scale trough highlight {
+  border-radius: 10;
+  background-color: $color-secundario;
+  border-radius: 10px;
+}
+.metric-off scale trough {
+  border-radius: 10;
+  min-width: 120px;
+  min-height: 10px;
+  background-color: $metric-fondo;
+}
+
+.metric-off scale trough highlight {
+  border-radius: 10;
+  background-color: $metric-fondo;
+  border-radius: 10px;
+}
+
+.metric-off .icono {
+  color: $color-off;
+  font-size: 20;
+}
+
+.ws {
+  font-size: 15px;
+  font-family: $font-icon;
+  color: $color-primario;
+}
+.ws11,
+.ws22,
+.ws33,
+.ws44,
+.ws55 {
+  color: $color-primario;
+  font-family: $font-icon2;
+}
+
+.ws1,
+.ws2,
+.ws3,
+.ws4,
+.ws5 {
+  color: $color-secundario;
+}
+
+.ws:hover {
+  font-size: 18px;
+}
+
+.musica {
+  min-width: 150px;
+}
+
+.container-calendario {
+  background: $color-container-fondo;
+  border-radius: 15px 5px 15px 15px;
+  padding-top: 10px;
+  font-family: $font-main;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 16px;
+}
+
+.calendario:selected {
+  background-color: $color-calendar;
+  border-radius: 5px;
+}
+
+.calendario.highlight {
+  color: $color-calendar;
+}
+
+.calendario.button {
+  color: $color-off;
+}
+
+.container-wifi {
+  background: $color-container-fondo;
+  border-radius: 5px;
+  padding-top: 10px;
+  font-family: $font-main;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 16px;
+}
+
+.container-sliders {
+  background: $color-container-fondo;
+  font-family: $font-main;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 5px 5px 15px 15px;
+}
+
+.container-layout {
+  background: $color-container-fondo;
+  font-family: $font-main;
+  padding: 15px;
+  font-size: 5px;
+  border-radius: 5px 5px 15px 15px;
+}
+
+.container-player {
+  background: $color-container-fondo;
+  border-radius: 10px;
+  font-family: $font-main;
+  font-size: 16px;
+  padding-right: 10px;
+}
+
+.container-board {
+  background: $color-container-fondo;
+  border-radius: 15px;
+  font-family: $font-main;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.image {
+  margin: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.icono-musica {
+  color: $color-primario;
+  font-size: 20;
+  font-family: $font-icon;
+}
+
+.icono-musica:hover {
+  font-size: 24;
+}
+
+.layout-text {
+  font-size: 16;
+  color: $color-primario;
+}
+
+.layout-text:hover {
+  font-weight: bold;
+}
+
+.hora-text {
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.hora-text-board {
+  font-weight: bold;
+  font-size: 65;
+  letter-spacing: 2px;
+}
+
+.icono-hora-board {
+  color: $color-primario;
+  font-size: 45;
+  font-family: $font-icon;
+}
+
+.hora-bt-board {
+  font-weight: bold;
+  font-size: 40;
+  letter-spacing: 2px;
+}
+
+.icono-bt-board {
+  color: $color-primario;
+  font-size: 40;
+  font-family: $font-icon3;
+}

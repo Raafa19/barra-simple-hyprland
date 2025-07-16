@@ -1,0 +1,32 @@
+(deflisten wm-tags-1
+  "scripts/workspaces.sh 1"
+)
+
+(deflisten wm-tags-0
+  "scripts/workspaces.sh 0"
+)
+
+(deflisten musicsource
+  :initial ""
+  "playerctl --follow metadata --format '{{ playerName }}' || true"
+)
+
+(deflisten musica
+  :initial ""
+  "playerctl --follow metadata --format '{{ xesam:artist }} - {{ xesam:title }}' || true"
+)
+
+(deflisten volumelisten
+  :initial 10
+  "scripts/volume.sh getvolumelisten"
+)
+
+(deflisten iconvollisten
+  :initial ""
+  "scripts/volume.sh geticonlisten"
+)
+
+(deflisten volclasslisten
+  :initial "metric"
+  "scripts/volume.sh getclasslisten"
+)

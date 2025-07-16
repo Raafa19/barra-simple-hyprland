@@ -1,0 +1,27 @@
+(defwidget board []
+  (box
+    :space-evenly false
+    :spacing 10
+    :orientation "v"
+    (box
+      :class "container-board"
+      :space-evenly false
+      :spacing 20
+      :space-evenly false
+      (label :show-truncated false :class "icono-hora-board" :text "")
+      (label :show-truncated false :class "hora-text-board" :text hora)
+    )
+    (box
+      :space-evenly false
+      :halign "end"
+      (box
+        :class "container-board"
+        :space-evenly false
+        :spacing 20
+        (label :show-truncated false :class "icono-bt-board" :text blueicon)
+        (label :show-truncated false :class "hora-bt-board" :text bluebatt)
+      )
+    )
+    
+  )
+)

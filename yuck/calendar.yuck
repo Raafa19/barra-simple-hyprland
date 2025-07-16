@@ -1,0 +1,23 @@
+(defwindow calendario
+  :monitor '[1, 0]'
+  :stacking "fg"
+  :geometry (geometry
+    :anchor "top right"
+    :y "1%"
+    :x "1%"
+    :width "17%"
+  )
+  :exclusive false
+  (calendario)
+)
+
+(defwidget calendario []
+  (box
+    :class "container-calendario"
+    :space-evenly false
+    (calendar
+      :class "calendario"
+      :hexpand true
+    )
+  )
+)

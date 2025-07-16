@@ -1,0 +1,125 @@
+; player window
+(defwindow player
+  :monitor '[1, 0]'
+  :stacking "fg"
+  :geometry (geometry
+    :anchor "top center"
+    :y "46px"
+    :width "17%"
+  )
+  :exclusive false
+  (player)
+)
+
+(defwidget player []
+  (box
+    :class "container-player"
+    :orientation "h"
+    :space-evenly false
+    :spacing 20
+    (box
+      :class "image"
+      :style 'background-image: url("${artcover}")'
+      :height 120
+      :width 120
+    )
+    (box
+      :orientation "v"
+      (cancion)
+      (artista)
+      (botones)
+    )
+  )
+)
+
+(deflisten artcover
+  :initial ""
+  "playerctl --follow metadata --format '{{ mpris:artUrl }}' || true"
+)
+
+(defwidget cancion []
+  (box
+    :space-evenly false
+    :width "200"
+    (scroll
+      :hscroll true
+      :vscroll false
+      :hexpand true
+      (label
+        :show-truncated false
+        :xalign 0
+        :style "font-size: 20px"
+        :text cancion
+      )
+    )
+  )
+)
+
+(defwidget artista []
+  (box
+    :space-evenly false
+    :width "200"
+    (scroll
+      :hscroll true
+      :vscroll false
+      :hexpand true
+      (label
+        :show-truncated false
+        :xalign 0
+        :style "font-style: italic; color: grey"
+        :text artista
+      )
+    )
+  )
+)
+
+(deflisten cancion
+  :initial ""
+  "playerctl --follow  metadata --format '{{ title }}' || true"
+)
+
+(deflisten artista
+  :initial ""
+  "playerctl --follow  metadata --format '{{ artist }}' || true"
+)
+
+(defwidget botones []
+  (box
+    :orientation "h"
+    (previous)
+    (playpause)
+    (next)
+  )
+)
+
+(defwidget previous []
+  (button
+    :class "icono-musica"
+    :onclick "playerctl previous"
+    ""
+  )
+)
+
+(defwidget playpause []
+  (button
+    :class "icono-musica"
+    :onclick "playerctl play-pause"
+    (label
+      :show-truncated false
+      :text {paused != "Playing" ? "" : ""}
+    )
+  )
+)
+
+(deflisten paused
+  :initial "Playing"
+  "playerctl -F status"
+)
+
+(defwidget next []
+  (button
+    :class "icono-musica"
+    :onclick "playerctl next"
+    ""
+  )
+)

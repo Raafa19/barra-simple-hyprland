@@ -1,0 +1,318 @@
+; -------------- BAR -----------------
+
+(defwidget bar []
+  (centerbox
+    :orientation "h"
+    :class "bar"
+    (toppart)
+    (midpart)
+    (endpart)
+  )
+)
+
+(defwidget bar0 []
+  (centerbox
+    :orientation "h"
+    :class "bar"
+    (toppart0)
+    (midpart)
+    (endpart)
+  )
+)
+
+; -------------- TOP PART -----------------
+
+(defwidget toppart []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :spacing 10
+    (workspaces)
+    (sistema)
+    (wifibt)
+    (scrshot)
+  )
+)
+
+(defwidget toppart0 []
+  (box
+    :orientation "h"
+    :space-evenly false
+    :spacing 10
+    (workspaces0)
+    (sistema)
+    (wifibt)
+    (scrshot)
+  )
+)
+
+(defwidget separ []
+  (box
+    (label :show-truncated false :class "separ" :text "|" )
+  )
+)
+
+(defwidget workspaces []
+  (box
+    :class "container"
+    :space-evenly false
+    :style "margin-left: 0px; padding-right: 0; border-radius: 12px 0px 0px 12px"
+    (literal :content wm-tags-1 :valign "center")
+  )
+)
+
+(defwidget workspaces0 []
+  (box
+    :class "container"
+    :space-evenly false
+    :style "margin-left: 0px; padding-right: 0; border-radius: 12px 0px 0px 12px"
+    (literal :content wm-tags-0 :valign "center")
+  )
+)
+
+(defwidget sistema []
+  (box
+    :class "container"
+    :space-evenly false
+    :spacing 10
+    (cpu :var cpurev :varname "cpurev")
+    (separ)
+    (ram :var ramrev :varname "ramrev")
+    (separ)
+    (bateria)
+  )
+)
+
+(defwidget cpu [var varname]
+  (box
+    :class "cpu"
+    :space-evenly false
+    (eventbox
+      :class "icono"
+      :onclick {var? "${EWW_CMD} update ${varname}=false": "${EWW_CMD} update ${varname}=true"}
+      ""
+    )
+    (revealer
+      :class "texto-icono"
+      :reveal var
+      :duration "100ms"
+      :transition "slideright"
+      (label :show-truncated false :class "texto-icono" :text "${round(EWW_CPU.avg, 0)} %")
+    )
+  )
+)
+
+(defwidget ram [var varname]
+  (box
+    :class "ram"
+    :space-evenly false
+    (eventbox
+      :class "icono"
+      :onclick {var? "${EWW_CMD} update ${varname}=false": "${EWW_CMD} update ${varname}=true"}
+      ""
+    )
+    (revealer
+      :class "texto-icono"
+      :reveal var
+      :duration "100ms"
+      :transition "slideright"
+      (label :show-truncated false :class "texto-icono" :text "${round(EWW_RAM.used_mem * 0.000001, 0)} MiB")
+    )
+  )
+)
+
+(defwidget bateria []
+  (box
+    :space-evenly false
+    (label :show-truncated false :class "icono" :text icono-bat)
+    (label :show-truncated false :class "texto-icono" :text "${bat-porcen} %")
+  )
+)
+
+(defwidget wifibt []
+  (box
+    :class "container"
+    :space-evenly false
+    :spacing 10
+    (wifi :var wifirev :varname "wifirev")
+    (separ)
+    (bt :var btrev :varname "btrev")
+    ; (separ)
+  )
+)
+
+(defwidget wifi [var varname]
+  (box
+    :class "wifi"
+    :space-evenly false
+    (eventbox
+      :class "icono"
+      :onclick {var? "${EWW_CMD} update ${varname}=false": "${EWW_CMD} update ${varname}=true"}
+      ""
+    )
+    (revealer
+      :reveal var
+      :duration "100ms"
+      :transition "slideright"
+      (label :show-truncated false :class "texto-icono" :text wifiname)
+    )
+  )
+)
+
+(defwidget bt [var varname]
+  (box
+    :class "bt"
+    :space-evenly false
+    
+    (eventbox
+      :class "iconoBt"
+      :onclick {var? "${EWW_CMD} update ${varname}=false": "${EWW_CMD} update ${varname}=true"}
+      (label :show-truncated false :text blueicon)
+    )
+    (revealer
+      :reveal var
+      :duration "100ms"
+      :transition "slideright"
+      (label :show-truncated false :class "texto-icono" :text bluename)
+    )
+    (label :show-truncated false :class "texto-icono" :text bluebatt)
+  )
+)
+
+(defwidget scrshot []
+  (box
+    :class "icono"
+    :space-evenly false
+    (button
+      :onclick "scripts/screenshot.sh"
+      (label :show-truncated false :text "")
+    )
+  )
+)
+
+; -------------- MID PART -----------------
+
+(defwidget midpart []
+  (box :class "container-musica"
+    :space-evenly false
+    :spacing 20
+    :visible {musica != "" ? true : false }
+    (button
+      :onclick "scripts/openwindow.sh player"
+      (label :show-truncated false :class "icono" :text {musica != "" ? musicsource == "spotify" ? "" : "" : ""})
+    )
+    (box
+      :space-evenly false
+      :width "200"
+      (scroll
+        :hscroll true
+        :vscroll false
+        :hexpand true
+        (label
+          :show-truncated false
+          :xalign 0
+          :text musica
+        )
+      )
+    )
+  )
+)
+
+
+; -------------- END PART -----------------
+
+(defwidget endpart []
+  (box
+    :space-evenly false
+    :halign "end"
+    :orientation "h"
+    (monitor)
+    (keyboard)
+    (brilloSlider)
+    (volumenSlider)
+    (horafecha)
+  )
+)
+
+(defwidget monitor []
+  (box
+    :space-evenly false
+    :class "icono"
+    :style "padding-right: 25px"
+    (button
+      :onclick "scripts/openwindow.sh monitorLayout"
+      (label :show-truncated false :text "")
+    )
+    
+  )
+)
+
+
+(defwidget keyboard []
+  (box
+    :space-evenly false
+    :class "icono"
+    :style "padding-left: 10px"
+    (button
+      :onclick "scripts/openwindow.sh layoutWindow"
+      (label :show-truncated false :text "")
+    )
+  )
+)
+
+(defwidget brilloSlider[]
+  (box
+    :space-evenly false
+    :class "icono"
+    :style "padding-left: 15px"
+    (button
+      :onclick "scripts/openwindow.sh brilloWindow"
+      (label :show-truncated false :text "")
+    )
+  )
+)
+
+(defwidget volumenSlider []
+  (box
+    :space-evenly false
+    :class "icono"
+    :style "padding-left: 15px"
+    (button
+      :onclick "scripts/openwindow.sh volumenWindow"
+      (label :show-truncated false :text "")
+    )
+  )
+)
+
+(defwidget horafecha []
+  (box
+    :space-evenly false
+    :class "container"
+    :spacing 10
+    (separ)
+    (hora)
+    (separ)
+    (fecha)
+  )
+)
+
+(defwidget hora []
+  (box
+    :space-evenly false
+    :spacing 10
+    (label :show-truncated false :class "icono" :text "")
+    (label :show-truncated false :class "hora-text" :text hora )
+  )
+)
+
+(defwidget fecha []
+  (box
+    :space-evenly false
+    :spacing 10
+    (button
+      :onclick "scripts/openwindow.sh calendario"
+      (label :show-truncated false :text fecha)
+    )
+    
+  )
+)

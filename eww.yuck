@@ -1,0 +1,53 @@
+(include "./yuck/pollers.yuck")
+(include "./yuck/listener.yuck")
+(include "./yuck/variables.yuck")
+(include "./yuck/widgets.yuck")
+(include "./yuck/calendar.yuck")
+(include "./yuck/sliders.yuck")
+(include "./yuck/player.yuck")
+(include "./yuck/keylayout.yuck")
+(include "./yuck/board.yuck")
+(include "./yuck/monitor.yuck")
+
+; ----- main Windows Wayland----- ;
+
+(defwindow mainbar
+  :monitor 1
+  :stacking "fg"
+  :geometry (geometry
+    :x "0px"
+    :y "3px"
+    :width "98%"
+    :height "3.5%"
+    :anchor "top center"
+  )
+  :exclusive true
+  (bar)
+)
+
+(defwindow mainbar0
+  :monitor 0
+  :stacking "fg"
+  :geometry (geometry
+    :x "0px"
+    :y "3px"
+    :width "98%"
+    :height "3.5%"
+    :anchor "top center"
+  )
+  :exclusive true
+  (bar0)
+)
+
+(defwindow board
+  :monitor  0
+  :stacking "fg"
+  :geometry (geometry
+    :anchor "top right"
+    :y "2%"
+    :x "1%"
+  )
+  :exclusive false
+  (board)
+)
+

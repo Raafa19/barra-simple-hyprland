@@ -1,0 +1,73 @@
+(defwindow brilloWindow
+  :monitor '[1, 0]'
+  :stacking "fg"
+  :geometry (geometry
+    :anchor "top right"
+    :y "1%"
+    :x "11%"
+  )
+  :exclusive false
+  (brilloBox)
+)
+
+(defwindow volumenWindow
+  :monitor '[1, 0]'
+  :stacking "fg"
+  :geometry (geometry
+    :anchor "top right"
+    :y "1%"
+    :x "9.2%"
+  )
+  :exclusive false
+  (volumeBox)
+)
+
+(defwidget brilloBox []
+  (box
+    :class "container-sliders"
+    (brillo)
+  )
+)
+
+(defwidget volumeBox []
+  (box
+    :class "container-sliders"
+    (volume)
+  )
+)
+
+
+(defwidget volume []
+  (box
+    :class volclasslisten
+    :space-evenly false
+    :spacing 10
+    (button
+      :onclick "scripts/volume.sh mute"
+      (label :show-truncated false :class "icono" :text iconvollisten)
+    )
+    (scale
+      :min -20
+      :max 101
+      :value volumelisten
+      :onchange "scripts/volume.sh setvolume {}"
+    )
+  )
+)
+
+(defwidget brillo []
+  (box
+    :class brillclass
+    :space-evenly false
+    :spacing 10
+    (label :show-truncated false :class "icono" :text "")
+    (scale
+      :min -20
+      :max 101
+      :value brillo-actual
+      :onchange "scripts/brillo.sh set-brillo {}"
+    )
+  )
+)
+
+

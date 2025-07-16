@@ -1,0 +1,9 @@
+(defvar wifirev false)
+
+(defvar btrev false)
+
+(defvar cpurev false)
+    
+(defvar ramrev false)
+
+(defvar volicon false)

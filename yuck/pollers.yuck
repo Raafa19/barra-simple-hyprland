@@ -1,0 +1,56 @@
+(defpoll icono-bat
+    :interval "10s"
+    "scripts/bateria.sh icono"
+)
+
+(defpoll bat-porcen
+    :interval "10s"
+    "cat /sys/class/power_supply/BAT0/capacity"
+)
+
+(defpoll wifiname
+    :initial ""
+    :interval "10s"
+    "scripts/wifi.sh"
+)
+
+(defpoll bluename
+    :initial "Desconectado"
+    :interval "10s"
+    "scripts/blue.sh name"
+)
+
+(defpoll bluebatt
+    :initial ""
+    :interval "10s"
+    "scripts/blue.sh batt"
+)
+
+(defpoll blueicon
+    :initial ""
+    :interval "1s"
+    "scripts/blue.sh icon"
+)
+
+(defpoll brillclass
+    :initial "metric"
+    :interval "100ms"
+    "scripts/brillo.sh getclass"
+)
+  
+(defpoll brillo-actual
+    :initial "10"
+    :interval "100ms"
+    "scripts/brillo.sh brillo-actual"
+)
+
+(defpoll hora
+    :interval "1s"
+    "date '+%H:%M'"
+)
+
+(defpoll fecha
+    :initial "-"
+    :interval "120s"
+    "date '+%A, %d de %b'"
+)
